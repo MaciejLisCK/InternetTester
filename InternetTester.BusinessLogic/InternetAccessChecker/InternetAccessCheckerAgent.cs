@@ -47,6 +47,10 @@ namespace InternetTester.BusinessLogic.InternetAccessChecker
 
         public void Dispose()
         {
+            if(_task.Status == TaskStatus.Running)
+            {
+                CancelInternetCheckerTask();
+            }
         }
 
         private void CancelInternetCheckerTask()
@@ -71,7 +75,7 @@ namespace InternetTester.BusinessLogic.InternetAccessChecker
                     OnChanged(EventArgs.Empty);
                 }
 
-                Task.Delay(_checkDelay);
+                Thread.Sleep(_checkDelay);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace InternetTester.BusinessLogic.InternetAccessChecker
 
         public bool IsInternetAvailable()
         {
-            var pingReplies = new List<PingReply>();
+            var pingResults = new List<Task<PingReply>>();
             var exceptions = new List<Exception>();
             for (int i = 0; i < _amountOfPingsToSend; i++)
             {
@@ -29,6 +29,7 @@ namespace InternetTester.BusinessLogic.InternetAccessChecker
                 {
                     Ping pingService = new Ping();
                     var result = pingService.SendPingAsync(_ipAddressToTest);
+                    pingResults.Add(result);
                 }
                 catch(PingException e)
                 {
@@ -36,7 +37,7 @@ namespace InternetTester.BusinessLogic.InternetAccessChecker
                 }
             }
 
-            var doesPingRepliesSuccess = pingReplies.All(pr => pr.Status == IPStatus.Success);
+            var doesPingRepliesSuccess = pingResults.Any(pr => pr.Result.Status == IPStatus.Success);
             var doesExceptionOccures = exceptions.Any();
 
             var isInternetAvailable = doesPingRepliesSuccess && !doesExceptionOccures;
