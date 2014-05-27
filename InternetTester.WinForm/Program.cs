@@ -1,4 +1,5 @@
-﻿using InternetTester.BusinessLogic.InternetAccessChecker;
+﻿using InternetTester.BusinessLogic.DesktopDrawer;
+using InternetTester.BusinessLogic.InternetAccessChecker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace InternetTester.WinForm
     static class Program
     {
         static InternetAccessCheckerAgent _internetAccessAgent;
+        static InternetInformationDesktopDrawerAgent _internetInformationDesktopDrawerAgent;
 
         [STAThread]
         static void Main()
@@ -22,16 +24,18 @@ namespace InternetTester.WinForm
             var googleIps = Dns.GetHostAddresses(googleHostName);
             var pingInternetAccessChecker = new PingInternetAccessChecker(googleIps.First(), amountOfPingsPerCheck);
             _internetAccessAgent = new InternetAccessCheckerAgent(pingInternetAccessChecker, checkDelay);
+            _internetAccessAgent.Changed += internetAccessAgent_Changed;
+            _internetInformationDesktopDrawerAgent = new InternetInformationDesktopDrawerAgent();
 
             _internetAccessAgent.Start();
+            _internetInformationDesktopDrawerAgent.Start();
 
-            _internetAccessAgent.Changed += internetAccessAgent_Changed;
             Application.Run();
         }
 
-        static void internetAccessAgent_Changed(object sender, EventArgs e)
+        static void internetAccessAgent_Changed(object sender, InternetAccessChangedEventArgs e)
         {
-            Console.WriteLine(_internetAccessAgent.IsInternetAvailable);
+            _internetInformationDesktopDrawerAgent.SetInternetAvailability(e.IsInternetAvailable);
         }
     }
 }

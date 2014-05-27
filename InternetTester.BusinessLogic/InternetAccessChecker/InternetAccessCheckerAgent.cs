@@ -16,10 +16,10 @@ namespace InternetTester.BusinessLogic.InternetAccessChecker
 
         public bool? IsInternetAvailable { get; private set; }
 
-        public delegate void ChangedEventHandler(object sender, EventArgs e);
+        public delegate void ChangedEventHandler(object sender, InternetAccessChangedEventArgs e);
         public event ChangedEventHandler Changed;
 
-        protected void OnChanged(EventArgs e)
+        protected void OnChanged(InternetAccessChangedEventArgs e)
         {
             if (Changed != null)
                 Changed(this, e);
@@ -71,8 +71,11 @@ namespace InternetTester.BusinessLogic.InternetAccessChecker
 
                 if (IsInternetAvailable != isInternetAvailable)
                 {
+                    var eventArgs = new InternetAccessChangedEventArgs();
+
                     IsInternetAvailable = isInternetAvailable;
-                    OnChanged(EventArgs.Empty);
+                    eventArgs.IsInternetAvailable = isInternetAvailable;
+                    OnChanged(eventArgs);
                 }
 
                 Thread.Sleep(_checkDelay);

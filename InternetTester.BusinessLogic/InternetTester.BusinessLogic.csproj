@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesktopDrawer\DesktopContext.cs" />
+    <Compile Include="DesktopDrawer\InternetInformationDesktopDrawerAgent.cs" />
     <Compile Include="InternetAccessChecker\IInternetAccessChecker.cs" />
+    <Compile Include="InternetAccessChecker\InternetAccessChangedEventArgs.cs" />
     <Compile Include="InternetAccessChecker\InternetAccessCheckerAgent.cs" />
     <Compile Include="InternetAccessChecker\PingInternetAccessChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
