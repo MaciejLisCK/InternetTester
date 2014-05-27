@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InternetAccessChecker\IInternetAccessChecker.cs" />
+    <Compile Include="InternetAccessChecker\InternetAccessCheckerAgent.cs" />
+    <Compile Include="InternetAccessChecker\PingInternetAccessChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
