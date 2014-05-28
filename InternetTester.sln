@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetTester.Tests", "Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetTester.WinForm", "InternetTester.WinForm\InternetTester.WinForm.csproj", "{EB00DA1C-C1C7-48D2-8E2C-CC8CDF647E6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetTester.WindowsService", "InternetTester.WindowsService\InternetTester.WindowsService.csproj", "{898C7A37-BA26-4F37-8B48-7F0FD38F4C77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EB00DA1C-C1C7-48D2-8E2C-CC8CDF647E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB00DA1C-C1C7-48D2-8E2C-CC8CDF647E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB00DA1C-C1C7-48D2-8E2C-CC8CDF647E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{898C7A37-BA26-4F37-8B48-7F0FD38F4C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{898C7A37-BA26-4F37-8B48-7F0FD38F4C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{898C7A37-BA26-4F37-8B48-7F0FD38F4C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{898C7A37-BA26-4F37-8B48-7F0FD38F4C77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
